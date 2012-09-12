@@ -1,8 +1,14 @@
 #eclipse config
 .project
 .pydevproject
+/.settings/
+
+#log folder
+log/
+try/
 
 *.py[co]
+__pycache__/
 
 # Packages
 *.egg

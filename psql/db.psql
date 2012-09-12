@@ -1,0 +1,1597 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.1.5
+-- Dumped by pg_dump version 9.1.5
+-- Started on 2012-09-12 20:42:24 CST
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 2275 (class 1262 OID 16467)
+-- Name: stock; Type: DATABASE; Schema: -; Owner: -
+--
+
+CREATE DATABASE stock WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE = 'en_US.UTF-8';
+
+
+\connect stock
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 224 (class 3079 OID 11696)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2277 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 237 (class 1255 OID 17140)
+-- Dependencies: 5 734
+-- Name: ohlc_d_insert_trigger(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION ohlc_d_insert_trigger() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    IF ( extract(year from NEW.date) = 2013 ) THEN
+        INSERT INTO ohlc_d_2013 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2012 ) THEN
+        INSERT INTO ohlc_d_2012 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2011 ) THEN
+        INSERT INTO ohlc_d_2011 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2010 ) THEN
+        INSERT INTO ohlc_d_2010 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2009 ) THEN
+        INSERT INTO ohlc_d_2009 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2008 ) THEN
+        INSERT INTO ohlc_d_2008 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2007 ) THEN
+        INSERT INTO ohlc_d_2007 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2006 ) THEN
+        INSERT INTO ohlc_d_2006 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2005 ) THEN
+        INSERT INTO ohlc_d_2005 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2004 ) THEN
+        INSERT INTO ohlc_d_2004 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2003 ) THEN
+        INSERT INTO ohlc_d_2003 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2002 ) THEN
+        INSERT INTO ohlc_d_2002 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2001 ) THEN
+        INSERT INTO ohlc_d_2001 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 2000 ) THEN
+        INSERT INTO ohlc_d_2000 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1999 ) THEN
+        INSERT INTO ohlc_d_1999 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1998 ) THEN
+        INSERT INTO ohlc_d_1998 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1997 ) THEN
+        INSERT INTO ohlc_d_1997 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1996 ) THEN
+        INSERT INTO ohlc_d_1996 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1995 ) THEN
+        INSERT INTO ohlc_d_1995 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1994 ) THEN
+        INSERT INTO ohlc_d_1994 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1993 ) THEN
+        INSERT INTO ohlc_d_1993 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1992 ) THEN
+        INSERT INTO ohlc_d_1992 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1991 ) THEN
+        INSERT INTO ohlc_d_1991 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1990 ) THEN
+        INSERT INTO ohlc_d_1990 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1989 ) THEN
+        INSERT INTO ohlc_d_1989 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1988 ) THEN
+        INSERT INTO ohlc_d_1988 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1987 ) THEN
+        INSERT INTO ohlc_d_1987 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1986 ) THEN
+        INSERT INTO ohlc_d_1986 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1985 ) THEN
+        INSERT INTO ohlc_d_1985 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1984 ) THEN
+        INSERT INTO ohlc_d_1984 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1983 ) THEN
+        INSERT INTO ohlc_d_1983 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1982 ) THEN
+        INSERT INTO ohlc_d_1982 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1981 ) THEN
+        INSERT INTO ohlc_d_1981 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1980 ) THEN
+        INSERT INTO ohlc_d_1980 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1979 ) THEN
+        INSERT INTO ohlc_d_1979 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1978 ) THEN
+        INSERT INTO ohlc_d_1978 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1977 ) THEN
+        INSERT INTO ohlc_d_1977 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1976 ) THEN
+        INSERT INTO ohlc_d_1976 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1975 ) THEN
+        INSERT INTO ohlc_d_1975 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1974 ) THEN
+        INSERT INTO ohlc_d_1974 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1973 ) THEN
+        INSERT INTO ohlc_d_1973 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1972 ) THEN
+        INSERT INTO ohlc_d_1972 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1971 ) THEN
+        INSERT INTO ohlc_d_1971 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) = 1970 ) THEN
+        INSERT INTO ohlc_d_1970 VALUES (NEW.*);
+    ELSE
+        RAISE EXCEPTION 'Date out of range.';
+END IF;
+RETURN NULL;
+END;
+$$;
+
+
+--
+-- TOC entry 236 (class 1255 OID 17281)
+-- Dependencies: 734 5
+-- Name: ohlc_m_insert_trigger(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION ohlc_m_insert_trigger() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+        IF ( extract(year from NEW.date) > 2000 and extract(year from NEW.date) <= 2020) THEN
+            INSERT INTO ohlc_m_2001 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) > 1980 and extract(year from NEW.date) <= 2000 ) THEN
+            INSERT INTO ohlc_m_1981 VALUES (NEW.*);
+    ELSE
+            RAISE EXCEPTION 'Date out of range.';
+    END IF;
+    RETURN NULL;
+    END;
+    $$;
+
+
+--
+-- TOC entry 238 (class 1255 OID 17314)
+-- Dependencies: 5 734
+-- Name: ohlc_w_insert_trigger(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION ohlc_w_insert_trigger() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+        IF ( extract(year from NEW.date) > 2010 and extract(year from NEW.date) <= 2015) THEN
+            INSERT INTO ohlc_w_2011 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) > 2005 and extract(year from NEW.date) <= 2010 ) THEN
+            INSERT INTO ohlc_w_2006 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) > 2000 and extract(year from NEW.date) <= 2005 ) THEN
+            INSERT INTO ohlc_w_2001 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) > 1995 and extract(year from NEW.date) <= 2000 ) THEN
+            INSERT INTO ohlc_w_1996 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) > 1990 and extract(year from NEW.date) <= 1995 ) THEN
+            INSERT INTO ohlc_w_1991 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) > 1985 and extract(year from NEW.date) <= 1990 ) THEN
+            INSERT INTO ohlc_w_1986 VALUES (NEW.*);
+    ELSIF ( extract(year from NEW.date) > 1980 and extract(year from NEW.date) <= 1985 ) THEN
+            INSERT INTO ohlc_w_1981 VALUES (NEW.*);
+    ELSE
+            RAISE EXCEPTION 'Date out of range.';
+    END IF;
+    RETURN NULL;
+    END;
+    $$;
+
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 168 (class 1259 OID 16943)
+-- Dependencies: 5
+-- Name: companies; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE companies (
+    id integer NOT NULL,
+    name text,
+    name_local text,
+    sector_id integer,
+    subsector_id integer
+);
+
+
+--
+-- TOC entry 167 (class 1259 OID 16941)
+-- Dependencies: 5 168
+-- Name: companies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE companies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2278 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: companies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE companies_id_seq OWNED BY companies.id;
+
+
+--
+-- TOC entry 170 (class 1259 OID 16954)
+-- Dependencies: 5
+-- Name: exchanges; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE exchanges (
+    id integer NOT NULL,
+    parent_id integer,
+    symbol character varying,
+    name text
+);
+
+
+--
+-- TOC entry 169 (class 1259 OID 16952)
+-- Dependencies: 170 5
+-- Name: exchanges_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE exchanges_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2279 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: exchanges_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE exchanges_id_seq OWNED BY exchanges.id;
+
+
+--
+-- TOC entry 163 (class 1259 OID 16479)
+-- Dependencies: 5
+-- Name: ohlc; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc (
+    product_id integer NOT NULL,
+    date date NOT NULL,
+    open numeric(7,2),
+    high numeric(7,2),
+    low numeric(7,2),
+    close numeric(7,2),
+    volume bigint,
+    adjclose numeric(7,2)
+);
+
+
+--
+-- TOC entry 164 (class 1259 OID 16482)
+-- Dependencies: 5 163
+-- Name: ohlc_d; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d (
+)
+INHERITS (ohlc);
+
+
+--
+-- TOC entry 171 (class 1259 OID 16964)
+-- Dependencies: 2153 5 164
+-- Name: ohlc_d_1970; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1970 (
+    CONSTRAINT ohlc_d_1970_date_check CHECK ((date_part('year'::text, date) = (1970)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 172 (class 1259 OID 16968)
+-- Dependencies: 2154 5 164
+-- Name: ohlc_d_1971; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1971 (
+    CONSTRAINT ohlc_d_1971_date_check CHECK ((date_part('year'::text, date) = (1971)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 173 (class 1259 OID 16972)
+-- Dependencies: 2155 5 164
+-- Name: ohlc_d_1972; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1972 (
+    CONSTRAINT ohlc_d_1972_date_check CHECK ((date_part('year'::text, date) = (1972)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 174 (class 1259 OID 16976)
+-- Dependencies: 2156 5 164
+-- Name: ohlc_d_1973; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1973 (
+    CONSTRAINT ohlc_d_1973_date_check CHECK ((date_part('year'::text, date) = (1973)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 175 (class 1259 OID 16980)
+-- Dependencies: 2157 5 164
+-- Name: ohlc_d_1974; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1974 (
+    CONSTRAINT ohlc_d_1974_date_check CHECK ((date_part('year'::text, date) = (1974)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 176 (class 1259 OID 16984)
+-- Dependencies: 2158 5 164
+-- Name: ohlc_d_1975; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1975 (
+    CONSTRAINT ohlc_d_1975_date_check CHECK ((date_part('year'::text, date) = (1975)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 177 (class 1259 OID 16988)
+-- Dependencies: 2159 5 164
+-- Name: ohlc_d_1976; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1976 (
+    CONSTRAINT ohlc_d_1976_date_check CHECK ((date_part('year'::text, date) = (1976)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 178 (class 1259 OID 16992)
+-- Dependencies: 2160 5 164
+-- Name: ohlc_d_1977; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1977 (
+    CONSTRAINT ohlc_d_1977_date_check CHECK ((date_part('year'::text, date) = (1977)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 179 (class 1259 OID 16996)
+-- Dependencies: 2161 5 164
+-- Name: ohlc_d_1978; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1978 (
+    CONSTRAINT ohlc_d_1978_date_check CHECK ((date_part('year'::text, date) = (1978)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 180 (class 1259 OID 17000)
+-- Dependencies: 2162 5 164
+-- Name: ohlc_d_1979; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1979 (
+    CONSTRAINT ohlc_d_1979_date_check CHECK ((date_part('year'::text, date) = (1979)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 181 (class 1259 OID 17004)
+-- Dependencies: 2163 164 5
+-- Name: ohlc_d_1980; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1980 (
+    CONSTRAINT ohlc_d_1980_date_check CHECK ((date_part('year'::text, date) = (1980)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 182 (class 1259 OID 17008)
+-- Dependencies: 2164 5 164
+-- Name: ohlc_d_1981; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1981 (
+    CONSTRAINT ohlc_d_1981_date_check CHECK ((date_part('year'::text, date) = (1981)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 183 (class 1259 OID 17012)
+-- Dependencies: 2165 5 164
+-- Name: ohlc_d_1982; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1982 (
+    CONSTRAINT ohlc_d_1982_date_check CHECK ((date_part('year'::text, date) = (1982)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 184 (class 1259 OID 17016)
+-- Dependencies: 2166 5 164
+-- Name: ohlc_d_1983; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1983 (
+    CONSTRAINT ohlc_d_1983_date_check CHECK ((date_part('year'::text, date) = (1983)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 185 (class 1259 OID 17020)
+-- Dependencies: 2167 5 164
+-- Name: ohlc_d_1984; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1984 (
+    CONSTRAINT ohlc_d_1984_date_check CHECK ((date_part('year'::text, date) = (1984)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 186 (class 1259 OID 17024)
+-- Dependencies: 2168 5 164
+-- Name: ohlc_d_1985; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1985 (
+    CONSTRAINT ohlc_d_1985_date_check CHECK ((date_part('year'::text, date) = (1985)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 187 (class 1259 OID 17028)
+-- Dependencies: 2169 5 164
+-- Name: ohlc_d_1986; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1986 (
+    CONSTRAINT ohlc_d_1986_date_check CHECK ((date_part('year'::text, date) = (1986)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 188 (class 1259 OID 17032)
+-- Dependencies: 2170 5 164
+-- Name: ohlc_d_1987; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1987 (
+    CONSTRAINT ohlc_d_1987_date_check CHECK ((date_part('year'::text, date) = (1987)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 189 (class 1259 OID 17036)
+-- Dependencies: 2171 5 164
+-- Name: ohlc_d_1988; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1988 (
+    CONSTRAINT ohlc_d_1988_date_check CHECK ((date_part('year'::text, date) = (1988)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 190 (class 1259 OID 17040)
+-- Dependencies: 2172 5 164
+-- Name: ohlc_d_1989; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1989 (
+    CONSTRAINT ohlc_d_1989_date_check CHECK ((date_part('year'::text, date) = (1989)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 191 (class 1259 OID 17044)
+-- Dependencies: 2173 5 164
+-- Name: ohlc_d_1990; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1990 (
+    CONSTRAINT ohlc_d_1990_date_check CHECK ((date_part('year'::text, date) = (1990)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 192 (class 1259 OID 17048)
+-- Dependencies: 2174 5 164
+-- Name: ohlc_d_1991; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1991 (
+    CONSTRAINT ohlc_d_1991_date_check CHECK ((date_part('year'::text, date) = (1991)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 193 (class 1259 OID 17052)
+-- Dependencies: 2175 5 164
+-- Name: ohlc_d_1992; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1992 (
+    CONSTRAINT ohlc_d_1992_date_check CHECK ((date_part('year'::text, date) = (1992)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 194 (class 1259 OID 17056)
+-- Dependencies: 2176 5 164
+-- Name: ohlc_d_1993; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1993 (
+    CONSTRAINT ohlc_d_1993_date_check CHECK ((date_part('year'::text, date) = (1993)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 195 (class 1259 OID 17060)
+-- Dependencies: 2177 5 164
+-- Name: ohlc_d_1994; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1994 (
+    CONSTRAINT ohlc_d_1994_date_check CHECK ((date_part('year'::text, date) = (1994)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 196 (class 1259 OID 17064)
+-- Dependencies: 2178 164 5
+-- Name: ohlc_d_1995; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1995 (
+    CONSTRAINT ohlc_d_1995_date_check CHECK ((date_part('year'::text, date) = (1995)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 197 (class 1259 OID 17068)
+-- Dependencies: 2179 5 164
+-- Name: ohlc_d_1996; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1996 (
+    CONSTRAINT ohlc_d_1996_date_check CHECK ((date_part('year'::text, date) = (1996)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 198 (class 1259 OID 17072)
+-- Dependencies: 2180 164 5
+-- Name: ohlc_d_1997; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1997 (
+    CONSTRAINT ohlc_d_1997_date_check CHECK ((date_part('year'::text, date) = (1997)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 199 (class 1259 OID 17076)
+-- Dependencies: 2181 164 5
+-- Name: ohlc_d_1998; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1998 (
+    CONSTRAINT ohlc_d_1998_date_check CHECK ((date_part('year'::text, date) = (1998)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 200 (class 1259 OID 17080)
+-- Dependencies: 2182 164 5
+-- Name: ohlc_d_1999; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_1999 (
+    CONSTRAINT ohlc_d_1999_date_check CHECK ((date_part('year'::text, date) = (1999)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 201 (class 1259 OID 17084)
+-- Dependencies: 2183 164 5
+-- Name: ohlc_d_2000; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2000 (
+    CONSTRAINT ohlc_d_2000_date_check CHECK ((date_part('year'::text, date) = (2000)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 202 (class 1259 OID 17088)
+-- Dependencies: 2184 164 5
+-- Name: ohlc_d_2001; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2001 (
+    CONSTRAINT ohlc_d_2001_date_check CHECK ((date_part('year'::text, date) = (2001)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 203 (class 1259 OID 17092)
+-- Dependencies: 2185 164 5
+-- Name: ohlc_d_2002; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2002 (
+    CONSTRAINT ohlc_d_2002_date_check CHECK ((date_part('year'::text, date) = (2002)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 204 (class 1259 OID 17096)
+-- Dependencies: 2186 164 5
+-- Name: ohlc_d_2003; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2003 (
+    CONSTRAINT ohlc_d_2003_date_check CHECK ((date_part('year'::text, date) = (2003)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 205 (class 1259 OID 17100)
+-- Dependencies: 2187 5 164
+-- Name: ohlc_d_2004; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2004 (
+    CONSTRAINT ohlc_d_2004_date_check CHECK ((date_part('year'::text, date) = (2004)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 206 (class 1259 OID 17104)
+-- Dependencies: 2188 5 164
+-- Name: ohlc_d_2005; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2005 (
+    CONSTRAINT ohlc_d_2005_date_check CHECK ((date_part('year'::text, date) = (2005)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 207 (class 1259 OID 17108)
+-- Dependencies: 2189 164 5
+-- Name: ohlc_d_2006; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2006 (
+    CONSTRAINT ohlc_d_2006_date_check CHECK ((date_part('year'::text, date) = (2006)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 208 (class 1259 OID 17112)
+-- Dependencies: 2190 5 164
+-- Name: ohlc_d_2007; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2007 (
+    CONSTRAINT ohlc_d_2007_date_check CHECK ((date_part('year'::text, date) = (2007)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 209 (class 1259 OID 17116)
+-- Dependencies: 2191 5 164
+-- Name: ohlc_d_2008; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2008 (
+    CONSTRAINT ohlc_d_2008_date_check CHECK ((date_part('year'::text, date) = (2008)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 210 (class 1259 OID 17120)
+-- Dependencies: 2192 5 164
+-- Name: ohlc_d_2009; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2009 (
+    CONSTRAINT ohlc_d_2009_date_check CHECK ((date_part('year'::text, date) = (2009)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 211 (class 1259 OID 17124)
+-- Dependencies: 2193 164 5
+-- Name: ohlc_d_2010; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2010 (
+    CONSTRAINT ohlc_d_2010_date_check CHECK ((date_part('year'::text, date) = (2010)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 212 (class 1259 OID 17128)
+-- Dependencies: 2194 5 164
+-- Name: ohlc_d_2011; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2011 (
+    CONSTRAINT ohlc_d_2011_date_check CHECK ((date_part('year'::text, date) = (2011)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 213 (class 1259 OID 17132)
+-- Dependencies: 2195 5 164
+-- Name: ohlc_d_2012; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2012 (
+    CONSTRAINT ohlc_d_2012_date_check CHECK ((date_part('year'::text, date) = (2012)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 214 (class 1259 OID 17136)
+-- Dependencies: 2196 5 164
+-- Name: ohlc_d_2013; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_d_2013 (
+    CONSTRAINT ohlc_d_2013_date_check CHECK ((date_part('year'::text, date) = (2013)::double precision))
+)
+INHERITS (ohlc_d);
+
+
+--
+-- TOC entry 166 (class 1259 OID 16493)
+-- Dependencies: 5 163
+-- Name: ohlc_m; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_m (
+)
+INHERITS (ohlc);
+
+
+--
+-- TOC entry 215 (class 1259 OID 17273)
+-- Dependencies: 2197 166 5
+-- Name: ohlc_m_1981; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_m_1981 (
+    CONSTRAINT ohlc_m_1981_date_check CHECK (((date_part('year'::text, date) > (1980)::double precision) AND (date_part('year'::text, date) <= (2000)::double precision)))
+)
+INHERITS (ohlc_m);
+
+
+--
+-- TOC entry 216 (class 1259 OID 17277)
+-- Dependencies: 2198 166 5
+-- Name: ohlc_m_2001; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_m_2001 (
+    CONSTRAINT ohlc_m_2001_date_check CHECK (((date_part('year'::text, date) > (2000)::double precision) AND (date_part('year'::text, date) <= (2020)::double precision)))
+)
+INHERITS (ohlc_m);
+
+
+--
+-- TOC entry 165 (class 1259 OID 16490)
+-- Dependencies: 5 163
+-- Name: ohlc_w; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_w (
+)
+INHERITS (ohlc);
+
+
+--
+-- TOC entry 217 (class 1259 OID 17286)
+-- Dependencies: 2199 165 5
+-- Name: ohlc_w_1981; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_w_1981 (
+    CONSTRAINT ohlc_w_1981_date_check CHECK (((date_part('year'::text, date) > (1980)::double precision) AND (date_part('year'::text, date) <= (1985)::double precision)))
+)
+INHERITS (ohlc_w);
+
+
+--
+-- TOC entry 218 (class 1259 OID 17290)
+-- Dependencies: 2200 5 165
+-- Name: ohlc_w_1986; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_w_1986 (
+    CONSTRAINT ohlc_w_1986_date_check CHECK (((date_part('year'::text, date) > (1985)::double precision) AND (date_part('year'::text, date) <= (1990)::double precision)))
+)
+INHERITS (ohlc_w);
+
+
+--
+-- TOC entry 219 (class 1259 OID 17294)
+-- Dependencies: 2201 165 5
+-- Name: ohlc_w_1991; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_w_1991 (
+    CONSTRAINT ohlc_w_1991_date_check CHECK (((date_part('year'::text, date) > (1990)::double precision) AND (date_part('year'::text, date) <= (1995)::double precision)))
+)
+INHERITS (ohlc_w);
+
+
+--
+-- TOC entry 220 (class 1259 OID 17298)
+-- Dependencies: 2202 5 165
+-- Name: ohlc_w_1996; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_w_1996 (
+    CONSTRAINT ohlc_w_1996_date_check CHECK (((date_part('year'::text, date) > (1995)::double precision) AND (date_part('year'::text, date) <= (2000)::double precision)))
+)
+INHERITS (ohlc_w);
+
+
+--
+-- TOC entry 221 (class 1259 OID 17302)
+-- Dependencies: 2203 165 5
+-- Name: ohlc_w_2001; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_w_2001 (
+    CONSTRAINT ohlc_w_2001_date_check CHECK (((date_part('year'::text, date) > (2000)::double precision) AND (date_part('year'::text, date) <= (2005)::double precision)))
+)
+INHERITS (ohlc_w);
+
+
+--
+-- TOC entry 222 (class 1259 OID 17306)
+-- Dependencies: 2204 5 165
+-- Name: ohlc_w_2006; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_w_2006 (
+    CONSTRAINT ohlc_w_2006_date_check CHECK (((date_part('year'::text, date) > (2005)::double precision) AND (date_part('year'::text, date) <= (2010)::double precision)))
+)
+INHERITS (ohlc_w);
+
+
+--
+-- TOC entry 223 (class 1259 OID 17310)
+-- Dependencies: 2205 165 5
+-- Name: ohlc_w_2011; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ohlc_w_2011 (
+    CONSTRAINT ohlc_w_2011_date_check CHECK (((date_part('year'::text, date) > (2010)::double precision) AND (date_part('year'::text, date) <= (2015)::double precision)))
+)
+INHERITS (ohlc_w);
+
+
+--
+-- TOC entry 162 (class 1259 OID 16470)
+-- Dependencies: 5
+-- Name: products; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE products (
+    id integer NOT NULL,
+    code character varying,
+    exchange_id integer,
+    company_id integer
+);
+
+
+--
+-- TOC entry 161 (class 1259 OID 16468)
+-- Dependencies: 162 5
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2280 (class 0 OID 0)
+-- Dependencies: 161
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE products_id_seq OWNED BY products.id;
+
+
+--
+-- TOC entry 2151 (class 2604 OID 16946)
+-- Dependencies: 167 168 168
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY companies ALTER COLUMN id SET DEFAULT nextval('companies_id_seq'::regclass);
+
+
+--
+-- TOC entry 2152 (class 2604 OID 16957)
+-- Dependencies: 170 169 170
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY exchanges ALTER COLUMN id SET DEFAULT nextval('exchanges_id_seq'::regclass);
+
+
+--
+-- TOC entry 2150 (class 2604 OID 16473)
+-- Dependencies: 162 161 162
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY products ALTER COLUMN id SET DEFAULT nextval('products_id_seq'::regclass);
+
+
+--
+-- TOC entry 2211 (class 2606 OID 16951)
+-- Dependencies: 168 168 2272
+-- Name: companies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY companies
+    ADD CONSTRAINT companies_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2213 (class 2606 OID 16962)
+-- Dependencies: 170 170 2272
+-- Name: exchanges_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY exchanges
+    ADD CONSTRAINT exchanges_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2209 (class 2606 OID 16497)
+-- Dependencies: 165 165 165 2272
+-- Name: ohlc_w_product_id_date_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY ohlc_w
+    ADD CONSTRAINT ohlc_w_product_id_date_key UNIQUE (product_id, date);
+
+
+--
+-- TOC entry 2207 (class 2606 OID 16478)
+-- Dependencies: 162 162 2272
+-- Name: products_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2214 (class 1259 OID 17142)
+-- Dependencies: 171 171 2272
+-- Name: ohlc_d_1970_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1970_idx ON ohlc_d_1970 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2215 (class 1259 OID 17143)
+-- Dependencies: 172 172 2272
+-- Name: ohlc_d_1971_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1971_idx ON ohlc_d_1971 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2216 (class 1259 OID 17144)
+-- Dependencies: 173 173 2272
+-- Name: ohlc_d_1972_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1972_idx ON ohlc_d_1972 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2217 (class 1259 OID 17145)
+-- Dependencies: 174 174 2272
+-- Name: ohlc_d_1973_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1973_idx ON ohlc_d_1973 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2218 (class 1259 OID 17146)
+-- Dependencies: 175 175 2272
+-- Name: ohlc_d_1974_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1974_idx ON ohlc_d_1974 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2219 (class 1259 OID 17147)
+-- Dependencies: 176 176 2272
+-- Name: ohlc_d_1975_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1975_idx ON ohlc_d_1975 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2220 (class 1259 OID 17148)
+-- Dependencies: 177 177 2272
+-- Name: ohlc_d_1976_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1976_idx ON ohlc_d_1976 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2221 (class 1259 OID 17149)
+-- Dependencies: 178 178 2272
+-- Name: ohlc_d_1977_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1977_idx ON ohlc_d_1977 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2222 (class 1259 OID 17150)
+-- Dependencies: 179 179 2272
+-- Name: ohlc_d_1978_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1978_idx ON ohlc_d_1978 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2223 (class 1259 OID 17151)
+-- Dependencies: 180 180 2272
+-- Name: ohlc_d_1979_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1979_idx ON ohlc_d_1979 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2224 (class 1259 OID 17152)
+-- Dependencies: 181 181 2272
+-- Name: ohlc_d_1980_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1980_idx ON ohlc_d_1980 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2225 (class 1259 OID 17153)
+-- Dependencies: 182 182 2272
+-- Name: ohlc_d_1981_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1981_idx ON ohlc_d_1981 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2226 (class 1259 OID 17154)
+-- Dependencies: 183 183 2272
+-- Name: ohlc_d_1982_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1982_idx ON ohlc_d_1982 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2227 (class 1259 OID 17155)
+-- Dependencies: 184 184 2272
+-- Name: ohlc_d_1983_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1983_idx ON ohlc_d_1983 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2228 (class 1259 OID 17156)
+-- Dependencies: 185 185 2272
+-- Name: ohlc_d_1984_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1984_idx ON ohlc_d_1984 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2229 (class 1259 OID 17157)
+-- Dependencies: 186 186 2272
+-- Name: ohlc_d_1985_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1985_idx ON ohlc_d_1985 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2230 (class 1259 OID 17158)
+-- Dependencies: 187 187 2272
+-- Name: ohlc_d_1986_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1986_idx ON ohlc_d_1986 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2231 (class 1259 OID 17159)
+-- Dependencies: 188 188 2272
+-- Name: ohlc_d_1987_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1987_idx ON ohlc_d_1987 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2232 (class 1259 OID 17160)
+-- Dependencies: 189 189 2272
+-- Name: ohlc_d_1988_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1988_idx ON ohlc_d_1988 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2233 (class 1259 OID 17161)
+-- Dependencies: 190 190 2272
+-- Name: ohlc_d_1989_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1989_idx ON ohlc_d_1989 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2234 (class 1259 OID 17162)
+-- Dependencies: 191 191 2272
+-- Name: ohlc_d_1990_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1990_idx ON ohlc_d_1990 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2235 (class 1259 OID 17163)
+-- Dependencies: 192 192 2272
+-- Name: ohlc_d_1991_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1991_idx ON ohlc_d_1991 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2236 (class 1259 OID 17164)
+-- Dependencies: 193 193 2272
+-- Name: ohlc_d_1992_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1992_idx ON ohlc_d_1992 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2237 (class 1259 OID 17165)
+-- Dependencies: 194 194 2272
+-- Name: ohlc_d_1993_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1993_idx ON ohlc_d_1993 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2238 (class 1259 OID 17166)
+-- Dependencies: 195 195 2272
+-- Name: ohlc_d_1994_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1994_idx ON ohlc_d_1994 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2239 (class 1259 OID 17167)
+-- Dependencies: 196 196 2272
+-- Name: ohlc_d_1995_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1995_idx ON ohlc_d_1995 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2240 (class 1259 OID 17168)
+-- Dependencies: 197 197 2272
+-- Name: ohlc_d_1996_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1996_idx ON ohlc_d_1996 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2241 (class 1259 OID 17169)
+-- Dependencies: 198 198 2272
+-- Name: ohlc_d_1997_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1997_idx ON ohlc_d_1997 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2242 (class 1259 OID 17170)
+-- Dependencies: 199 199 2272
+-- Name: ohlc_d_1998_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1998_idx ON ohlc_d_1998 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2243 (class 1259 OID 17171)
+-- Dependencies: 200 200 2272
+-- Name: ohlc_d_1999_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_1999_idx ON ohlc_d_1999 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2244 (class 1259 OID 17172)
+-- Dependencies: 201 201 2272
+-- Name: ohlc_d_2000_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2000_idx ON ohlc_d_2000 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2245 (class 1259 OID 17173)
+-- Dependencies: 202 202 2272
+-- Name: ohlc_d_2001_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2001_idx ON ohlc_d_2001 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2246 (class 1259 OID 17174)
+-- Dependencies: 203 203 2272
+-- Name: ohlc_d_2002_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2002_idx ON ohlc_d_2002 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2247 (class 1259 OID 17175)
+-- Dependencies: 204 204 2272
+-- Name: ohlc_d_2003_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2003_idx ON ohlc_d_2003 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2248 (class 1259 OID 17176)
+-- Dependencies: 205 205 2272
+-- Name: ohlc_d_2004_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2004_idx ON ohlc_d_2004 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2249 (class 1259 OID 17177)
+-- Dependencies: 206 206 2272
+-- Name: ohlc_d_2005_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2005_idx ON ohlc_d_2005 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2250 (class 1259 OID 17178)
+-- Dependencies: 207 207 2272
+-- Name: ohlc_d_2006_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2006_idx ON ohlc_d_2006 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2251 (class 1259 OID 17179)
+-- Dependencies: 208 208 2272
+-- Name: ohlc_d_2007_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2007_idx ON ohlc_d_2007 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2252 (class 1259 OID 17180)
+-- Dependencies: 209 209 2272
+-- Name: ohlc_d_2008_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2008_idx ON ohlc_d_2008 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2253 (class 1259 OID 17181)
+-- Dependencies: 210 210 2272
+-- Name: ohlc_d_2009_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2009_idx ON ohlc_d_2009 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2254 (class 1259 OID 17182)
+-- Dependencies: 211 211 2272
+-- Name: ohlc_d_2010_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2010_idx ON ohlc_d_2010 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2255 (class 1259 OID 17183)
+-- Dependencies: 212 212 2272
+-- Name: ohlc_d_2011_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2011_idx ON ohlc_d_2011 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2256 (class 1259 OID 17184)
+-- Dependencies: 213 213 2272
+-- Name: ohlc_d_2012_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2012_idx ON ohlc_d_2012 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2257 (class 1259 OID 17185)
+-- Dependencies: 214 214 2272
+-- Name: ohlc_d_2013_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_d_2013_idx ON ohlc_d_2013 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2258 (class 1259 OID 17283)
+-- Dependencies: 215 215 2272
+-- Name: ohlc_m_1981_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_m_1981_idx ON ohlc_m_1981 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2259 (class 1259 OID 17284)
+-- Dependencies: 216 216 2272
+-- Name: ohlc_m_2001_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_m_2001_idx ON ohlc_m_2001 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2260 (class 1259 OID 17316)
+-- Dependencies: 217 217 2272
+-- Name: ohlc_w_1981_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_w_1981_idx ON ohlc_w_1981 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2261 (class 1259 OID 17317)
+-- Dependencies: 218 218 2272
+-- Name: ohlc_w_1986_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_w_1986_idx ON ohlc_w_1986 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2262 (class 1259 OID 17318)
+-- Dependencies: 219 219 2272
+-- Name: ohlc_w_1991_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_w_1991_idx ON ohlc_w_1991 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2263 (class 1259 OID 17319)
+-- Dependencies: 220 220 2272
+-- Name: ohlc_w_1996_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_w_1996_idx ON ohlc_w_1996 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2264 (class 1259 OID 17320)
+-- Dependencies: 221 221 2272
+-- Name: ohlc_w_2001_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_w_2001_idx ON ohlc_w_2001 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2265 (class 1259 OID 17321)
+-- Dependencies: 222 222 2272
+-- Name: ohlc_w_2006_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_w_2006_idx ON ohlc_w_2006 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2266 (class 1259 OID 17322)
+-- Dependencies: 223 223 2272
+-- Name: ohlc_w_2011_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX ohlc_w_2011_idx ON ohlc_w_2011 USING btree (product_id, date);
+
+
+--
+-- TOC entry 2268 (class 2620 OID 17141)
+-- Dependencies: 237 164 2272
+-- Name: insert_ohlc_d_trigger; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER insert_ohlc_d_trigger BEFORE INSERT ON ohlc_d FOR EACH ROW EXECUTE PROCEDURE ohlc_d_insert_trigger();
+
+
+--
+-- TOC entry 2270 (class 2620 OID 17282)
+-- Dependencies: 236 166 2272
+-- Name: insert_ohlc_m_trigger; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER insert_ohlc_m_trigger BEFORE INSERT ON ohlc_m FOR EACH ROW EXECUTE PROCEDURE ohlc_m_insert_trigger();
+
+
+--
+-- TOC entry 2269 (class 2620 OID 17315)
+-- Dependencies: 238 165 2272
+-- Name: insert_ohlc_w_trigger; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER insert_ohlc_w_trigger BEFORE INSERT ON ohlc_w FOR EACH ROW EXECUTE PROCEDURE ohlc_w_insert_trigger();
+
+
+--
+-- TOC entry 2267 (class 2606 OID 16485)
+-- Dependencies: 2206 162 164 2272
+-- Name: ohlc_d_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY ohlc_d
+    ADD CONSTRAINT ohlc_d_fkey FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE;
+
+
+-- Completed on 2012-09-12 20:42:24 CST
+
+--
+-- PostgreSQL database dump complete
+--
+
