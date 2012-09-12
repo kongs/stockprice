@@ -1,3 +1,7 @@
+#eclipse config
+.project
+.pydevproject
+
 *.py[co]
 
 # Packages
